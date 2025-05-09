@@ -8,12 +8,12 @@ const data = {
 export default function CenterLinks() {
   const [region, setRegion] = useState('Kenya');
   return (
-    <section className="py-8 px-4">
+    <section className="py-8 px-4" id="adventures">
       <div className="flex justify-center mb-4">
         {['Kenya', 'Tanzania'].map(r => (
           <button
             key={r}
-            className={`px-4 py-2 mx-2 rounded ${region === r ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
+            className={\`px-4 py-2 mx-2 rounded \${region === r ? 'bg-blue-500 text-white' : 'bg-gray-200'}\`}
             onClick={() => setRegion(r)}
           >
             {r} Experiences
@@ -24,7 +24,7 @@ export default function CenterLinks() {
         {data[region].map((item, i) => (
           <a
             key={i}
-            href={`/experience/${region.toLowerCase()}/${i + 1}`}
+            href={\`/experience/\${region.toLowerCase()}/\${i + 1}\`}
             className="block overflow-hidden rounded-lg shadow-lg"
           >
             <img src={item.img} alt={item.caption} className="w-full h-32 object-cover" />

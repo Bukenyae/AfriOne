@@ -2,15 +2,24 @@ import React from 'react';
 
 export default function HeaderSection() {
   return (
-    <header className="flex items-center justify-between p-4 bg-white shadow-md fixed w-full z-10">
-      <div className="text-xl font-bold">Africa Trip Advisor</div>
-      <nav>
-        <ul className="flex space-x-4">
-          <li><a href="#" className="hover:text-blue-500">Home</a></li>
-          <li><a href="#" className="hover:text-blue-500">About</a></li>
-          <li><a href="#" className="hover:text-blue-500">Contact</a></li>
-        </ul>
-      </nav>
+    <header className="fixed top-0 left-0 w-full bg-white shadow-md z-10">
+      <div className="max-w-7xl mx-auto flex items-center justify-between p-4">
+        {/* Logo */}
+        <div className="flex items-center">
+          <img src="/logo.png" alt="Africa Trip Advisor" className="h-8 w-auto" />
+        </div>
+        {/* Center Links */}
+        <nav className="flex space-x-8">
+          <a href="/" className="text-gray-700 hover:text-blue-500 font-medium">AfriOne</a>
+          <a href="#adventures" className="text-gray-700 hover:text-blue-500 font-medium">Adventures</a>
+        </nav>
+        {/* User Login */}
+        <div>
+          <button className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+            Login
+          </button>
+        </div>
+      </div>
     </header>
   );
 }
