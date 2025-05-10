@@ -36,7 +36,7 @@ export default function SearchBar({ floating }) {
         <input
           type="text"
           placeholder="Add dates"
-          onFocus={(e) => e.target.type = 'date'}
+          onFocus={(e) => (e.target.type = 'date')}
           className="w-full text-sm placeholder-gray-400 focus:outline-none"
           required
         />
@@ -55,7 +55,7 @@ export default function SearchBar({ floating }) {
       </div>
       <button
         type="submit"
-        className="px-6 flex items-center justify-center"
+        className="flex items-center justify-center px-6"
       >
         <FiSearch className="h-6 w-6 text-pink-500" />
       </button>
