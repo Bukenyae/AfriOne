@@ -12,7 +12,7 @@ export default function HeroSection() {
         <h1 className="text-5xl text-white font-bold">Discover Africa</h1>
         <p className="mt-4 text-xl text-white">Join unforgettable adventures in Kenya and Tanzania</p>
         <div className="w-full max-w-2xl mt-8">
-          <SearchBar floating />
+          <SearchBar />
         </div>
       </div>
     </section>

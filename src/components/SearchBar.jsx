@@ -1,26 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FiSearch } from 'react-icons/fi';
 
-export default function SearchBar({ floating }) {
+export default function SearchBar() {
   const [destination, setDestination] = useState('');
   const [date, setDate] = useState('');
   const [guests, setGuests] = useState(1);
+  const [sticky, setSticky] = useState(false);
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    console.log({ destination, date, guests });
-  };
+  useEffect(() => {
+    const headerHeight = 64;
+    const handleScroll = () => {
+      if (window.scrollY > window.innerHeight - headerHeight - 50) {
+        setSticky(true);
+      } else {
+        setSticky(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-  const containerClasses = floating
-    ? 'absolute left-1/2 transform -translate-x-1/2 bottom-10 w-full max-w-2xl'
-    : 'max-w-4xl mx-auto mt-6';
+  const containerClasses = sticky
+    ? 'fixed top-0 left-0 w-full bg-white z-20 shadow-lg'
+    : 'relative';
 
   return (
     <form
-      onSubmit={handleSearch}
-      className={`${containerClasses} flex items-center bg-white rounded-full shadow-lg divide-x divide-gray-300 overflow-hidden`}
+      onSubmit={(e) => {
+        e.preventDefault();
+        console.log({ destination, date, guests });
+      }}
+      className={`${containerClasses} mx-auto ${sticky ? 'mt-0' : 'mt-8'} flex items-center bg-white rounded-full shadow-lg divide-x divide-gray-300 overflow-hidden max-w-2xl`}
+      style={sticky ? { padding: '0.5rem' } : { padding: '1rem' }}
     >
-      <div className="flex-1 px-6 py-3">
+      <div className="flex-1 px-4 py-2">
         <label className="block text-xs font-semibold text-gray-500">Where</label>
         <input
           type="text"
@@ -31,7 +44,7 @@ export default function SearchBar({ floating }) {
           required
         />
       </div>
-      <div className="flex-1 px-6 py-3">
+      <div className="flex-1 px-4 py-2">
         <label className="block text-xs font-semibold text-gray-500">Date</label>
         <input
           type="text"
@@ -41,7 +54,7 @@ export default function SearchBar({ floating }) {
           required
         />
       </div>
-      <div className="flex-1 px-6 py-3">
+      <div className="flex-1 px-4 py-2">
         <label className="block text-xs font-semibold text-gray-500">Who</label>
         <input
           type="number"
@@ -55,10 +68,8 @@ export default function SearchBar({ floating }) {
       </div>
       <button
         type="submit"
-        className="flex items-center justify-center px-6"
+        className="flex items-center justify-center px-4 text-pink-500"
       >
-        <FiSearch className="h-6 w-6 text-pink-500" />
+        <FiSearch className="h-6 w-6" />
       </button>
     </form>
-);
-}
