@@ -60,3 +60,5 @@ export default function SearchBar({ floating }) {
         <FiSearch className="h-6 w-6 text-pink-500" />
       </button>
     </form>
+);
+}
