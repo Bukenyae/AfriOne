@@ -8,7 +8,7 @@ export default function SearchBar() {
   const [sticky, setSticky] = useState(false);
 
   useEffect(() => {
-    const headerHeight = 64; // adjust if header height changes
+    const headerHeight = 64;
     const handleScroll = () => {
       if (window.scrollY > window.innerHeight - headerHeight - 50) {
         setSticky(true);
