@@ -33,5 +33,5 @@ export default function CenterLinks() {
         ))}
       </div>
     </section>
-  );
+);
 }
