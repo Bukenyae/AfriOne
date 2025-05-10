@@ -8,7 +8,7 @@ export default function SearchBar() {
   const [sticky, setSticky] = useState(false);
 
   useEffect(() => {
-    const headerHeight = 64;
+    const headerHeight = 64; 
     const handleScroll = () => {
       if (window.scrollY > window.innerHeight - headerHeight - 50) {
         setSticky(true);
@@ -30,7 +30,7 @@ export default function SearchBar() {
         e.preventDefault();
         console.log({ destination, date, guests });
       }}
-      className={`${containerClasses} mx-auto ${sticky ? 'mt-0' : 'mt-8'} flex items-center bg-white rounded-full shadow-lg divide-x divide-gray-300 overflow-hidden max-w-2xl`}
+      className={`${containerClasses} mx-auto mt-${sticky ? '0' : '8'} flex items-center bg-white rounded-full shadow-lg divide-x divide-gray-300 overflow-hidden max-w-2xl`}
       style={sticky ? { padding: '0.5rem' } : { padding: '1rem' }}
     >
       <div className="flex-1 px-4 py-2">
